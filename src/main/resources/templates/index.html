@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Todolist Management System</title>
+
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" 
+	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" 
+	crossorigin="anonymous">
+<link rel="stylesheet"  href="/styles.css">
+</head>
+<body>
+	<div align="center" class="container my-5">
+		<h1>Todolist Management System</h1>
+		<br>
+		<div class="d-flex flex-row-reverse">
+		 <!--   
+		  <div class="p-2 my-0"><a th:href=@{/home}><button type="button" class="btn btn-success">Show Full Details</button></a></div>
+		  <div class="p-2 my-0"><a th:href=@{/register}><button type="button" class="btn btn-primary">SignUp</button></a></div>
+		  <div class="p-2 my-0"><a th:href=@{/login}><button type="button" class="btn btn-danger">Login</button></a></div>
+		-->
+			<div class="p-2 my-0"><a th:href=@{/add}><button type="button" class="btn btn-primary">Add Todo-Item</button></a></div>
+		</div>
+		<br>
+		<div class="container">
+			<table border="1" class="table ">
+				<thead class="table-warning">
+					<tr>
+						<th>Todo</th>
+						<th>Status</th> 
+						<th>Update</th>
+						<th>Delete</th>
+					</tr>
+				</thead>
+				<tbody class="table-primary">
+				<tr th:each="todolist: ${todos}">
+					<td th:text=${todolist.todoItem}></td>
+					<td th:text=${todolist.status}></td>
+					<td>
+						<a th:href="@{/edit/{id}(id=${todolist.id})}" class="btn btn-primary">Update</a>
+					</td>
+					<td>
+						<a th:href="@{/delete/{id}(id=${todolist.id})}" class="btn btn-danger">Delete</a>
+					</td>
+				</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</body>
+</html>
